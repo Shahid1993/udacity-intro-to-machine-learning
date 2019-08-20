@@ -1,10 +1,9 @@
 #!/usr/bin/python
 
 import pickle
-import cPickle
 import numpy
 
-from sklearn import cross_validation
+from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_selection import SelectPercentile, f_classif
 
@@ -29,17 +28,34 @@ def preprocess(words_file = "../tools/word_data.pkl", authors_file="../tools/ema
 
     ### the words (features) and authors (labels), already largely preprocessed
     ### this preprocessing will be repeated in the text learning mini-project
-    authors_file_handler = open(authors_file, "r")
+    
+
+    original = words_file
+    destination = "word_data_unix.pkl"
+
+    content = ''
+    outsize = 0
+    with open(original, 'rb') as infile:
+        content = infile.read()
+    with open(destination, 'wb') as output:
+        for line in content.splitlines():
+            outsize += len(line) + 1
+            output.write(line + str.encode('\n'))
+
+    print("Done. Saved %s bytes." % (len(content)-outsize))
+
+    authors_file_handler = open(destination, "rb")
+
     authors = pickle.load(authors_file_handler)
     authors_file_handler.close()
 
-    words_file_handler = open(words_file, "r")
-    word_data = cPickle.load(words_file_handler)
+    words_file_handler = open(words_file, "rb")
+    word_data = pickle.load(words_file_handler)
     words_file_handler.close()
 
     ### test_size is the percentage of events assigned to the test set
     ### (remainder go into training)
-    features_train, features_test, labels_train, labels_test = cross_validation.train_test_split(word_data, authors, test_size=0.1, random_state=42)
+    features_train, features_test, labels_train, labels_test = train_test_split(word_data, authors, test_size=0.1, random_state=42)
 
 
 
