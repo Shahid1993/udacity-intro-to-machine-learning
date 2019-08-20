@@ -9,7 +9,7 @@ from sklearn.feature_selection import SelectPercentile, f_classif
 
 
 
-def preprocess(words_file = "../tools/word_data.pkl", authors_file="../tools/email_authors.pkl"):
+def preprocess(words_file = "../tools/word_data_unix.pkl", authors_file="../tools/email_authors_unix.pkl"):
     """ 
         this function takes a pre-made list of email texts (by default word_data.pkl)
         and the corresponding authors (by default email_authors.pkl) and performs
@@ -28,24 +28,7 @@ def preprocess(words_file = "../tools/word_data.pkl", authors_file="../tools/ema
 
     ### the words (features) and authors (labels), already largely preprocessed
     ### this preprocessing will be repeated in the text learning mini-project
-    
-
-    original = words_file
-    destination = "word_data_unix.pkl"
-
-    content = ''
-    outsize = 0
-    with open(original, 'rb') as infile:
-        content = infile.read()
-    with open(destination, 'wb') as output:
-        for line in content.splitlines():
-            outsize += len(line) + 1
-            output.write(line + str.encode('\n'))
-
-    print("Done. Saved %s bytes." % (len(content)-outsize))
-
-    authors_file_handler = open(destination, "rb")
-
+    authors_file_handler = open(authors_file, "rb")
     authors = pickle.load(authors_file_handler)
     authors_file_handler.close()
 

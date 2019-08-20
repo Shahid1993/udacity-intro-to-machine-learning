@@ -33,3 +33,10 @@
 
     print("Done. Saved %s bytes." % (len(content)-outsize))
     ```
+
+## Results :
+    no. of Chris training emails: 7936  
+    no. of Sara training emails: 7884  
+    training time: 1.681 s  
+    Predicting time: 0.329 s  
+    accuracy: 0.9732650739476678  
