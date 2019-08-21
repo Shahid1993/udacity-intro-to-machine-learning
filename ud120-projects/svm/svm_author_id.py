@@ -26,12 +26,18 @@ features_train, features_test, labels_train, labels_test = preprocess()
 ### your code goes here ###
 from sklearn.svm import SVC
 
-clf = SVC(kernel='linear')
+#clf = SVC(kernel='linear')
+clf = SVC(kernel='rbf', C=10000)
 
+# features_train = features_train[:(len(features_train)//100)]
+# labels_train = labels_train[:(len(labels_train)//100)]
+t0 = time()
 clf.fit(features_train, labels_train)
+print("Training time:", round(time()-t0,3), "s")
 
+t1 = time()
 pred = clf.predict(features_test)
-
+print("Prediction time:", round(time()-t1, 3), "s")
 
 #########################################################
 from sklearn.metrics import accuracy_score
@@ -39,4 +45,11 @@ from sklearn.metrics import accuracy_score
 accuracy = accuracy_score(pred, labels_test)
 
 print('accuracy:',accuracy)
+print(pred[10])
+print(pred[26])
+print(pred[50])
+
+print(len(pred))
+# Test events predicted to be in the 'Chris' (1) event
+print(len(list(filter(lambda x : (x == 1), pred))))
 
