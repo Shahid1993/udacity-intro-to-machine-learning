@@ -2,10 +2,10 @@
 
 **Observation 1:** 
 
-- *kernel='linear'*
-    no. of Chris training emails: 7936 
-    no. of Sara training emails: 7884 
-    accuracy: 0.9840728100113766 
+- *kernel='linear'*  
+    no. of Chris training emails: 7936  
+    no. of Sara training emails: 7884  
+    accuracy: 0.9840728100113766  
 
 **Observation 2:**
 - *kernel='linear'*
@@ -39,7 +39,7 @@
     Prediction time: 1.328 s  
     accuracy: 0.8924914675767918 
 
-**Observation 5:**
+**Observation 6:**
 - *kernel='rbf', C=10000*  
     no. of Chris training emails: 7936  
     no. of Sara training emails: 7884  
