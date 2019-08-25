@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture
 
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
 features_train, labels_train, features_test, labels_test = makeTerrainData()
 
 
@@ -31,8 +34,15 @@ plt.show()
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
 
+clf = RandomForestClassifier(criterion='entropy', min_samples_split=10, n_estimators=30)
 
+clf.fit(features_train, labels_train)
 
+pred = clf.predict(features_test)
+
+acc = accuracy_score(pred, labels_test)
+
+print("Accuracy:", acc)
 
 
 
