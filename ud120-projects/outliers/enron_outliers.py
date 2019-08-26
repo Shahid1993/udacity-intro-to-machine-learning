@@ -29,8 +29,4 @@ matplotlib.pyplot.xlabel("salary")
 matplotlib.pyplot.ylabel("bonus")
 matplotlib.pyplot.show()
 
-print(data_dict)
-filtered_dict = dict(filter(lambda item: item[1]['salary'] > 1000000, data_dict.items()))
-
-print(filtered_dict)
 
