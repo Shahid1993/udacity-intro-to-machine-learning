@@ -41,3 +41,5 @@ features_train, features_test, labels_train, labels_test = train_test_split(feat
 clf.fit(features_train, labels_train)
 
 print(clf.score(features_test, labels_test))
+
+#Output : 0.7241379310344828
