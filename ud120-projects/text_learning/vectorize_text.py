@@ -53,7 +53,13 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
 
             ### use str.replace() to remove any instances of the words
             ### ["sara", "shackleton", "chris", "germani"]
+            
             replaceWords = ["sara", "shackleton", "chris", "germani"]
+            
+            #Added for Feature Scaling Lesson
+            replaceWords.append("sshacklensf")
+            replaceWords.append("cgermannsf")
+            
             for w in replaceWords:
                 text = text.replace(w, "")
 
